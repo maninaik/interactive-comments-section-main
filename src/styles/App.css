@@ -35,6 +35,7 @@
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
+	align-items: center;
 }
 .comment-user-avatar img {
 	width: 25px;
@@ -42,6 +43,12 @@
 }
 .comment-user {
 	font-weight: bold;
+}
+.comment-current-user {
+	background-color: var(--moderate-blue);
+	color: var(--white);
+	border-radius: 5px;
+	padding: 2px 5px;
 }
 .comment-btn-container {
 	display: flex;

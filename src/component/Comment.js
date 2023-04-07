@@ -30,6 +30,13 @@ export default function Comment({
 								/>
 							</div>
 							<div className='comment-user'>{commentInfo.user.username}</div>
+							<div
+								className={`comment-current-user ${
+									!isCurrentUser ? 'display-none' : ''
+								}`}>
+								you
+							</div>
+
 							<div className='comment-time'>{commentInfo.createdAt}</div>
 							<div
 								className='comment-btn-container'
