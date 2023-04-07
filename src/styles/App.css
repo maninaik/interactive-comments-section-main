@@ -82,6 +82,21 @@
 	border-left: 1px solid var(--light-gray);
 }
 
+.comment-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.comment-footer button {
+	border: none;
+	border-radius: 5px;
+	color: var(--white);
+	padding: 10px 20px;
+	background-color: var(--moderate-blue);
+	cursor: pointer;
+}
+
 /* add comment */
 .add-comment-container {
 	background-color: var(--white);

@@ -39,6 +39,32 @@ function App() {
 		}
 		setComments(filteredComments);
 	};
+
+	const updateComment = ({ id, type, content }) => {
+		let filteredComments = [...comments];
+
+		if (type === 'reply') {
+			filteredComments.forEach((comment, idx) => {
+				const newReplies = comment.replies.map((val) => {
+					if (val.id === id) {
+						return { ...val, content };
+					} else {
+						return val;
+					}
+				});
+				filteredComments[idx].replies = newReplies;
+			});
+		} else {
+			filteredComments = filteredComments.map((val) => {
+				if (val.id === id) {
+					return { ...val, content };
+				} else {
+					return val;
+				}
+			});
+		}
+		setComments(filteredComments);
+	};
 	return (
 		<div className='App'>
 			<header className='App-header'>
@@ -49,6 +75,7 @@ function App() {
 				comments={comments}
 				currentUser={currentUser}
 				deleteComment={deleteComment}
+				updateComment={updateComment}
 			/>
 			<AddComment
 				currentUser={currentUser}

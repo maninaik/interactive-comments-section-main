@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 export default function Comment({
 	commentInfo,
 	currentUser,
 	deleteComment,
+	updateComment,
 	type,
 }) {
+	const [editing, setEditing] = useState(false);
+	const [commentText, setCommentText] = useState(commentInfo.content);
 	const isCurrentUser = currentUser?.username === commentInfo?.user?.username;
 	const getUserAvatar = () => {
 		return `/images/avatars/image-${commentInfo.user.username}.png`;
 	};
 
 	const replyHandler = () => {};
-	const editHandler = () => {};
+
+	const editHandler = () => {
+		setEditing(true);
+	};
+
 	const deleteHandler = () => {
 		deleteComment({ id: commentInfo.id, type });
+	};
+
+	const updateHandler = () => {
+		updateComment({ id: commentInfo.id, type, content: commentText });
+		setEditing(false);
 	};
 
 	return (
@@ -38,6 +50,7 @@ export default function Comment({
 							</div>
 
 							<div className='comment-time'>{commentInfo.createdAt}</div>
+							{/* comment buttons */}
 							<div
 								className='comment-btn-container'
 								style={{ marginLeft: 'auto' }}>
@@ -67,7 +80,25 @@ export default function Comment({
 								</div>
 							</div>
 						</div>
-						<div className='comment-content'>{commentInfo.content}</div>
+						{editing ? (
+							<>
+								<div className='add-comment-text'>
+									<textarea
+										name='add-comment'
+										id=''
+										value={commentText}
+										onChange={(e) => {
+											setCommentText(e.target.value);
+										}}
+										rows='5'></textarea>
+								</div>
+								<div className='comment-footer'>
+									<button onClick={updateHandler}>Update</button>
+								</div>
+							</>
+						) : (
+							<div className='comment-content'>{commentInfo.content}</div>
+						)}
 					</div>
 				</div>
 			</div>
@@ -79,6 +110,7 @@ export default function Comment({
 							type='reply'
 							currentUser={currentUser}
 							deleteComment={deleteComment}
+							updateComment={updateComment}
 						/>
 					))}
 				</div>
