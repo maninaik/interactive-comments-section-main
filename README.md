@@ -10,7 +10,6 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
 - [Author](#author)
 
@@ -29,12 +28,14 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot1.png)
 
 ### Links
 
 - Solution URL: [solution URL](https://github.com/maninaik/interactive-comments-section-main)
 - Live Site URL: [live site URL](https://interactive-comments-section-main-eta.vercel.app/)
+
+## My Process
 
 ### Built with
 
@@ -44,8 +45,6 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ### Continued development
 
 Add backend and persist comments in backend DB
@@ -53,4 +52,3 @@ Add backend and persist comments in backend DB
 ## Author
 
 - Website - [Mani Naik](https://www.linkedin.com/in/maninaik)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
