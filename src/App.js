@@ -22,7 +22,22 @@ function App() {
 	// 	localStorage.setItem('comments', JSON.stringify(comments));
 	// }, [comments]);
 
-	const addCommentToList = (comment) => {
+	const addCommentToList = (comment, type, parentId) => {
+		console.log(type);
+		console.log(parentId);
+		if (type === 'reply') {
+			let newComments = [...comments];
+			newComments = newComments.map((val) => {
+				if (val.id !== parentId) return val;
+
+				return {
+					...val,
+					replies: [...val.replies, comment],
+				};
+			});
+			setComments(newComments);
+			return;
+		}
 		setComments((prevComments) => [...prevComments, comment]);
 	};
 
@@ -76,10 +91,12 @@ function App() {
 				currentUser={currentUser}
 				deleteComment={deleteComment}
 				updateComment={updateComment}
+				addCommentToList={addCommentToList}
 			/>
 			<AddComment
 				currentUser={currentUser}
 				addCommentToList={addCommentToList}
+				type='comment'
 			/>
 		</div>
 	);

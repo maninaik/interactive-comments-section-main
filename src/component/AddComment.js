@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-export default function AddComment({ currentUser, addCommentToList }) {
+export default function AddComment({
+	currentUser,
+	addCommentToList,
+	type,
+	parentId,
+	setReplying,
+}) {
 	const [commentText, setCommentText] = useState('');
 
 	const addCommentHandler = (event) => {
@@ -13,9 +19,15 @@ export default function AddComment({ currentUser, addCommentToList }) {
 			score: 0,
 			username: currentUser.username,
 			user: currentUser,
-			replies: [],
 		};
-		addCommentToList(newComment);
+
+		if (type === 'reply') {
+			addCommentToList(newComment, type, parentId);
+			setReplying(false);
+		} else {
+			newComment.replies = [];
+			addCommentToList(newComment, type);
+		}
 		setCommentText('');
 	};
 	return (

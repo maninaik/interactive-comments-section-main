@@ -5,6 +5,7 @@ export default function CommentList({
 	currentUser,
 	deleteComment,
 	updateComment,
+	addCommentToList,
 }) {
 	return (
 		<div>
@@ -16,6 +17,8 @@ export default function CommentList({
 					commentInfo={comment}
 					deleteComment={deleteComment}
 					updateComment={updateComment}
+					addCommentToList={addCommentToList}
+					parentId={comment.id}
 				/>
 			))}
 		</div>

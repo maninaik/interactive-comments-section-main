@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
+import CommentBtn from './CommentBtn';
+import AddComment from './AddComment';
 export default function Comment({
 	commentInfo,
 	currentUser,
 	deleteComment,
 	updateComment,
 	type,
+	addCommentToList,
+	parentId,
 }) {
 	const [editing, setEditing] = useState(false);
+	const [replying, setReplying] = useState(false);
 	const [commentText, setCommentText] = useState(commentInfo.content);
 	const isCurrentUser = currentUser?.username === commentInfo?.user?.username;
 	const getUserAvatar = () => {
 		return `/images/avatars/image-${commentInfo.user.username}.png`;
 	};
 
-	const replyHandler = () => {};
+	const replyHandler = () => {
+		setReplying(true);
+	};
 
 	const editHandler = () => {
 		setEditing(true);
@@ -51,34 +58,12 @@ export default function Comment({
 
 							<div className='comment-time'>{commentInfo.createdAt}</div>
 							{/* comment buttons */}
-							<div
-								className='comment-btn-container'
-								style={{ marginLeft: 'auto' }}>
-								<div
-									className={`comment-btn-reply ${
-										isCurrentUser ? 'display-none' : ''
-									}`}>
-									<button onClick={replyHandler}>
-										<img src='/images/icon-reply.svg' alt='reply' /> Reply
-									</button>
-								</div>
-								<div
-									className={`comment-btn-edit ${
-										!isCurrentUser ? 'display-none' : ''
-									}`}>
-									<button onClick={editHandler}>
-										<img src='/images/icon-edit.svg' alt='edit' /> Edit
-									</button>
-								</div>
-								<div
-									className={`comment-btn-delete ${
-										!isCurrentUser ? 'display-none' : ''
-									}`}>
-									<button onClick={deleteHandler}>
-										<img src='/images/icon-delete.svg' alt='delete' /> Delete
-									</button>
-								</div>
-							</div>
+							<CommentBtn
+								isCurrentUser={isCurrentUser}
+								replyHandler={replyHandler}
+								editHandler={editHandler}
+								deleteHandler={deleteHandler}
+							/>
 						</div>
 						{editing ? (
 							<>
@@ -102,6 +87,17 @@ export default function Comment({
 					</div>
 				</div>
 			</div>
+			<>
+				{replying && (
+					<AddComment
+						currentUser={currentUser}
+						addCommentToList={addCommentToList}
+						type='reply'
+						parentId={parentId}
+						setReplying={setReplying}
+					/>
+				)}
+			</>
 			{commentInfo.replies?.length > 0 && (
 				<div className='replies'>
 					{commentInfo.replies.map((reply) => (
@@ -111,6 +107,8 @@ export default function Comment({
 							currentUser={currentUser}
 							deleteComment={deleteComment}
 							updateComment={updateComment}
+							addCommentToList={addCommentToList}
+							parentId={commentInfo.id}
 						/>
 					))}
 				</div>
