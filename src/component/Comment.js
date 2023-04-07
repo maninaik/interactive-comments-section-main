@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import CommentBtn from './CommentBtn';
 import AddComment from './AddComment';
+import '../styles/Comment.css';
+import DeleteModal from './DeleteModal';
 export default function Comment({
 	commentInfo,
 	currentUser,
@@ -12,6 +14,7 @@ export default function Comment({
 }) {
 	const [editing, setEditing] = useState(false);
 	const [replying, setReplying] = useState(false);
+	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	const [commentText, setCommentText] = useState(commentInfo.content);
 	const isCurrentUser = currentUser?.username === commentInfo?.user?.username;
 	const getUserAvatar = () => {
@@ -27,7 +30,7 @@ export default function Comment({
 	};
 
 	const deleteHandler = () => {
-		deleteComment({ id: commentInfo.id, type });
+		setShowDeleteModal(true);
 	};
 
 	const updateHandler = () => {
@@ -87,6 +90,14 @@ export default function Comment({
 					</div>
 				</div>
 			</div>
+			{showDeleteModal && (
+				<DeleteModal
+					setShowDeleteModal={setShowDeleteModal}
+					deleteComment={deleteComment}
+					commentInfo={commentInfo}
+					type={type}
+				/>
+			)}
 			<>
 				{replying && (
 					<AddComment
@@ -102,6 +113,7 @@ export default function Comment({
 				<div className='replies'>
 					{commentInfo.replies.map((reply) => (
 						<Comment
+							key={reply.id}
 							commentInfo={reply}
 							type='reply'
 							currentUser={currentUser}

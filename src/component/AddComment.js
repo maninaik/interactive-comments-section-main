@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import '../styles/AddComment.css';
 export default function AddComment({
 	currentUser,
 	addCommentToList,
