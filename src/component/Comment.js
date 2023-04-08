@@ -3,6 +3,7 @@ import CommentBtn from './CommentBtn';
 import AddComment from './AddComment';
 import '../styles/Comment.css';
 import DeleteModal from './DeleteModal';
+import timeSince from '../utils/time-since';
 export default function Comment({
 	commentInfo,
 	currentUser,
@@ -59,7 +60,9 @@ export default function Comment({
 								you
 							</div>
 
-							<div className='comment-time'>{commentInfo.createdAt}</div>
+							<div className='comment-time'>
+								{timeSince(commentInfo.createdAt)}
+							</div>
 							{/* comment buttons */}
 							<CommentBtn
 								isCurrentUser={isCurrentUser}

@@ -15,7 +15,7 @@ export default function AddComment({
 		const newComment = {
 			id: Math.floor(Math.random() * 100) + 5,
 			content: commentText,
-			createdAt: 'seconds ago',
+			createdAt: new Date().toISOString(), // store date in ISO string
 			score: 0,
 			username: currentUser.username,
 			user: currentUser,
