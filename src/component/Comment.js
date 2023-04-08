@@ -148,7 +148,7 @@ export default function Comment({
 							key={reply.id}
 							commentInfo={reply}
 							type='reply'
-							replyingTo={commentInfo.user.username}
+							replyingTo={reply.user.username}
 							currentUser={currentUser}
 							deleteComment={deleteComment}
 							updateComment={updateComment}
