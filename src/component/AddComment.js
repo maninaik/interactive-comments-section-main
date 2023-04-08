@@ -11,7 +11,7 @@ export default function AddComment({
 
 	const addCommentHandler = (event) => {
 		event.preventDefault();
-
+		if (commentText.trim() === '') return;
 		const newComment = {
 			id: Math.floor(Math.random() * 100) + 5,
 			content: commentText,

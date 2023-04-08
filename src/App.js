@@ -5,11 +5,10 @@ import CommentList from './component/CommentList';
 import AddComment from './component/AddComment';
 
 function App() {
-	const [comments, setComments] = useState([]);
+	const [comments, setComments] = useState(null);
 	const [currentUser, setCurrentUser] = useState({});
 
 	useEffect(() => {
-		console.log(data);
 		const storedComments = localStorage.getItem('comments');
 		storedComments !== null
 			? setComments(JSON.parse(localStorage.getItem('comments')))
@@ -17,14 +16,13 @@ function App() {
 		setCurrentUser(data.currentUser);
 	}, []);
 
-	// useEffect(() => {
-	// 	console.log(comments);
-	// 	localStorage.setItem('comments', JSON.stringify(comments));
-	// }, [comments]);
+	useEffect(() => {
+		if (comments) {
+			localStorage.setItem('comments', JSON.stringify(comments));
+		}
+	}, [comments]);
 
 	const addCommentToList = (comment, type, parentId) => {
-		console.log(type);
-		console.log(parentId);
 		if (type === 'reply') {
 			let newComments = [...comments];
 			newComments = newComments.map((val) => {

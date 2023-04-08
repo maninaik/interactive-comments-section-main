@@ -9,7 +9,7 @@ export default function CommentList({
 }) {
 	return (
 		<div>
-			{comments.map((comment) => (
+			{comments?.map((comment) => (
 				<Comment
 					key={comment.id}
 					type='comment'
