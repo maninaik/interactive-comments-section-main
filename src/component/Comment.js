@@ -14,6 +14,7 @@ export default function Comment({
 	addCommentToList,
 	parentId,
 	updateCommmentScore,
+	replyingTo,
 }) {
 	const [editing, setEditing] = useState(false);
 	const [replying, setReplying] = useState(false);
@@ -134,6 +135,7 @@ export default function Comment({
 						currentUser={currentUser}
 						addCommentToList={addCommentToList}
 						type='reply'
+						replyingTo={replyingTo}
 						parentId={parentId}
 						setReplying={setReplying}
 					/>
@@ -146,6 +148,7 @@ export default function Comment({
 							key={reply.id}
 							commentInfo={reply}
 							type='reply'
+							replyingTo={commentInfo.user.username}
 							currentUser={currentUser}
 							deleteComment={deleteComment}
 							updateComment={updateComment}

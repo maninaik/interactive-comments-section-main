@@ -21,6 +21,7 @@ export default function CommentList({
 					updateComment={updateComment}
 					addCommentToList={addCommentToList}
 					parentId={comment.id}
+					replyingTo={comment.user.username}
 					updateCommmentScore={updateCommmentScore}
 				/>
 			))}

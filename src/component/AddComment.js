@@ -6,8 +6,10 @@ export default function AddComment({
 	type,
 	parentId,
 	setReplying,
+	replyingTo,
 }) {
-	const [commentText, setCommentText] = useState('');
+	const text = type === 'reply' ? `<b>@${replyingTo}</b>` : '';
+	const [commentText, setCommentText] = useState(text);
 
 	const addCommentHandler = (event) => {
 		event.preventDefault();
