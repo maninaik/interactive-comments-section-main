@@ -6,7 +6,9 @@ export default function CommentList({
 	deleteComment,
 	updateComment,
 	addCommentToList,
+	updateCommmentScore,
 }) {
+	comments.sort((a, b) => b.score - a.score);
 	return (
 		<div>
 			{comments?.map((comment) => (
@@ -19,6 +21,7 @@ export default function CommentList({
 					updateComment={updateComment}
 					addCommentToList={addCommentToList}
 					parentId={comment.id}
+					updateCommmentScore={updateCommmentScore}
 				/>
 			))}
 		</div>

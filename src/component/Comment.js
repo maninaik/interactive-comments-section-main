@@ -12,6 +12,7 @@ export default function Comment({
 	type,
 	addCommentToList,
 	parentId,
+	updateCommmentScore,
 }) {
 	const [editing, setEditing] = useState(false);
 	const [replying, setReplying] = useState(false);
@@ -39,11 +40,29 @@ export default function Comment({
 		setEditing(false);
 	};
 
+	const incrementScore = () => {
+		updateCommmentScore({ id: commentInfo.id, type, increment: true });
+	};
+
+	const decrementScore = () => {
+		updateCommmentScore({ id: commentInfo.id, type, increment: false });
+	};
+
 	return (
 		<>
 			<div className='comment'>
 				<div className='comment-main'>
-					<div className='comment-button'></div>
+					{!isCurrentUser && (
+						<div className='comment-score'>
+							<button onClick={incrementScore}>
+								<img src='/images/icon-plus.svg' alt='' />
+							</button>
+							<div className='score-view'>{commentInfo.score}</div>
+							<button onClick={decrementScore}>
+								<img src='/images/icon-minus.svg' alt='' />
+							</button>
+						</div>
+					)}
 					<div className='comment-container'>
 						<div className='comment-header'>
 							<div className='comment-user-avatar'>

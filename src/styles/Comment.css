@@ -11,6 +11,7 @@
 	background-color: var(--white);
 	border-radius: 5px;
 	padding: 20px;
+	gap: 15px;
 }
 
 .comment-container {
@@ -83,4 +84,26 @@
 	padding: 10px 20px;
 	background-color: var(--moderate-blue);
 	cursor: pointer;
+}
+
+.comment-main .comment-score {
+	background-color: var(--very-light-gray);
+	border-radius: 10px;
+}
+
+.comment-main .comment-score button {
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	background-color: transparent;
+	cursor: pointer;
+	font-weight: 800;
+	color: var(--white);
+}
+
+.comment-main .comment-score .score-view {
+	display: flex;
+	justify-content: center;
+	color: var(--moderate-blue);
+	font-weight: 500;
 }

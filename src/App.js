@@ -78,6 +78,35 @@ function App() {
 		}
 		setComments(filteredComments);
 	};
+
+	// third argument true is increment and false is decrement
+	const updateCommmentScore = ({ id, type, increment }) => {
+		let filteredComments = [...comments];
+
+		if (type === 'reply') {
+			filteredComments.forEach((comment, idx) => {
+				const newReplies = comment.replies.map((val) => {
+					if (val.id === id) {
+						if (increment) return { ...val, score: val.score + 1 };
+						else return { ...val, score: val.score - 1 };
+					} else {
+						return val;
+					}
+				});
+				filteredComments[idx].replies = newReplies;
+			});
+		} else {
+			filteredComments = filteredComments.map((val) => {
+				if (val.id === id) {
+					if (increment) return { ...val, score: val.score + 1 };
+					else return { ...val, score: val.score - 1 };
+				} else {
+					return val;
+				}
+			});
+		}
+		setComments(filteredComments);
+	};
 	return (
 		<div className='App'>
 			<header className='App-header'>
@@ -90,6 +119,7 @@ function App() {
 				deleteComment={deleteComment}
 				updateComment={updateComment}
 				addCommentToList={addCommentToList}
+				updateCommmentScore={updateCommmentScore}
 			/>
 			<AddComment
 				currentUser={currentUser}
