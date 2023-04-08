@@ -143,6 +143,7 @@ export default function Comment({
 							updateComment={updateComment}
 							addCommentToList={addCommentToList}
 							parentId={commentInfo.id}
+							updateCommmentScore={updateCommmentScore}
 						/>
 					))}
 				</div>

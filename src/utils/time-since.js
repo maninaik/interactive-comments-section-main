@@ -2,7 +2,6 @@ export default function timeSince(dateISO) {
 	const now = new Date().getTime();
 
 	const difference = now - new Date(dateISO).getTime();
-	console.log(difference);
 	let timeSince = '';
 	let seconds = (difference / 1000).toFixed(0);
 	let minutes = (difference / (1000 * 60)).toFixed(0);

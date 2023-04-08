@@ -8,7 +8,7 @@ export default function CommentList({
 	addCommentToList,
 	updateCommmentScore,
 }) {
-	comments.sort((a, b) => b.score - a.score);
+	comments?.sort((a, b) => b.score - a.score);
 	return (
 		<div>
 			{comments?.map((comment) => (
