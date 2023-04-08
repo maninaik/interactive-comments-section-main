@@ -1,0 +1,36 @@
+.comment-main .comment-score {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: var(--very-light-gray);
+	border-radius: 10px;
+}
+
+.comment-main .comment-score button {
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	background-color: transparent;
+	cursor: pointer;
+	font-weight: 800;
+	color: var(--white);
+}
+
+.comment-main .comment-score .score-view {
+	display: flex;
+	justify-content: center;
+	color: var(--moderate-blue);
+	align-items: center;
+	font-weight: 500;
+}
+
+.comment-main .comment-score.mobile-only {
+	flex-direction: row;
+}
+
+@media (max-width: 500px) {
+	.comment-main .comment-score button {
+		display: flex;
+		align-items: center;
+	}
+}

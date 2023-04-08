@@ -11,6 +11,23 @@
 	display: none !important;
 }
 
+.desktop-only {
+	@media (max-width: 500px) {
+		display: none !important;
+	}
+}
+
+.mobile-only {
+	@media (min-width: 501px) {
+		display: none !important;
+	}
+}
+
+button:hover {
+	opacity: 0.7;
+	cursor: pointer;
+}
+
 .modal-wrapper {
 	position: fixed;
 	z-index: 100;

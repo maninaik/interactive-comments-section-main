@@ -4,6 +4,7 @@ import AddComment from './AddComment';
 import '../styles/Comment.css';
 import DeleteModal from './DeleteModal';
 import timeSince from '../utils/time-since';
+import CommentScore from './CommentScore';
 export default function Comment({
 	commentInfo,
 	currentUser,
@@ -40,29 +41,18 @@ export default function Comment({
 		setEditing(false);
 	};
 
-	const incrementScore = () => {
-		updateCommmentScore({ id: commentInfo.id, type, increment: true });
-	};
-
-	const decrementScore = () => {
-		updateCommmentScore({ id: commentInfo.id, type, increment: false });
-	};
-
 	return (
 		<>
 			<div className='comment'>
 				<div className='comment-main'>
-					{!isCurrentUser && (
-						<div className='comment-score'>
-							<button onClick={incrementScore}>
-								<img src='/images/icon-plus.svg' alt='' />
-							</button>
-							<div className='score-view'>{commentInfo.score}</div>
-							<button onClick={decrementScore}>
-								<img src='/images/icon-minus.svg' alt='' />
-							</button>
-						</div>
-					)}
+					<CommentScore
+						id={commentInfo.id}
+						type={type}
+						score={commentInfo.score}
+						updateCommmentScore={updateCommmentScore}
+						desktop={true}
+					/>
+
 					<div className='comment-container'>
 						<div className='comment-header'>
 							<div className='comment-user-avatar'>
@@ -88,6 +78,7 @@ export default function Comment({
 								replyHandler={replyHandler}
 								editHandler={editHandler}
 								deleteHandler={deleteHandler}
+								desktop={true}
 							/>
 						</div>
 						{editing ? (
@@ -102,13 +93,30 @@ export default function Comment({
 										}}
 										rows='5'></textarea>
 								</div>
-								<div className='comment-footer'>
+								<div className='comment-edit-footer'>
 									<button onClick={updateHandler}>Update</button>
 								</div>
 							</>
 						) : (
 							<div className='comment-content'>{commentInfo.content}</div>
 						)}
+						<div className='comment-footer mobile-only'>
+							<CommentScore
+								id={commentInfo.id}
+								type={type}
+								score={commentInfo.score}
+								updateCommmentScore={updateCommmentScore}
+								desktop={false}
+							/>
+
+							<CommentBtn
+								isCurrentUser={isCurrentUser}
+								replyHandler={replyHandler}
+								editHandler={editHandler}
+								deleteHandler={deleteHandler}
+								desktop={false}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -5,9 +5,13 @@ export default function CommentBtn({
 	replyHandler,
 	editHandler,
 	deleteHandler,
+	desktop, // true if for desktop, or false for mobile
 }) {
 	return (
-		<div className='comment-btn-container'>
+		<div
+			className={`comment-btn-container ${
+				desktop ? 'desktop-only' : 'mobile-only'
+			}`}>
 			<div
 				className={`comment-btn-reply ${isCurrentUser ? 'display-none' : ''}`}>
 				<button onClick={replyHandler}>

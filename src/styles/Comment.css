@@ -71,13 +71,13 @@
 	border-left: 1px solid var(--light-gray);
 }
 
-.comment-footer {
+.comment-edit-footer {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
 }
 
-.comment-footer button {
+.comment-edit-footer button {
 	border: none;
 	border-radius: 5px;
 	color: var(--white);
@@ -86,24 +86,13 @@
 	cursor: pointer;
 }
 
-.comment-main .comment-score {
-	background-color: var(--very-light-gray);
-	border-radius: 10px;
-}
-
-.comment-main .comment-score button {
-	border: none;
-	border-radius: 5px;
-	padding: 5px 10px;
-	background-color: transparent;
-	cursor: pointer;
-	font-weight: 800;
-	color: var(--white);
-}
-
-.comment-main .comment-score .score-view {
+.comment-footer {
 	display: flex;
-	justify-content: center;
-	color: var(--moderate-blue);
-	font-weight: 500;
+	flex-direction: row;
+}
+
+@media (max-width: 500px) {
+	.comment-container {
+		gap: 10px;
+	}
 }
