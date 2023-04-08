@@ -30,6 +30,8 @@ Users should be able to:
 
 ![](./screenshot1.png)
 
+![](./screenshot2.png)
+
 ### Links
 
 - Solution URL: [solution URL](https://github.com/maninaik/interactive-comments-section-main)
