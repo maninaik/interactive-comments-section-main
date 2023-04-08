@@ -25,14 +25,14 @@ code {
 		monospace;
 }
 
-.desktop-only {
-	@media (max-width: 500px) {
+@media (max-width: 500px) {
+	.desktop-only {
 		display: none !important;
 	}
 }
 
-.mobile-only {
-	@media (min-width: 501px) {
+@media (min-width: 501px) {
+	.mobile-only {
 		display: none !important;
 	}
 }
